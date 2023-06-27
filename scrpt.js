@@ -76,7 +76,7 @@ function handleProductClick(event) {
 }
 
 function renderResults() {
-  // console.log("Your results are in!");
+  // console.log("The results are ready!");
   let ul = document.querySelector("ul");
   for (let i = 0; i < allProducts.length; i++) {
     let li = document.createElement("li");
