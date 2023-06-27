@@ -12,7 +12,7 @@
     width: 1024px;
     margin: 3rem auto;
     display: grid;
-    grid-template-columns: 150px 4fr;
+    grid-template-columns: 150px 3fr;
     grid-template-rows: 6.5rem 10rem 20rem 40%;
   }
   
@@ -104,4 +104,9 @@
   
   li {
     line-height: 1.6;
+  }
+
+  canvas {
+    width: 75%;
+    height: 500px;
   }
