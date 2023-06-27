@@ -27,21 +27,28 @@ function Product(name, src) {
 
 function renderProducts() {
   // we need to generate a number to reference the Product we want to render onto the page
-  let Product1 = getRandomNumber();
-  let Product2 = getRandomNumber();
+  let product1 = getRandomNumber();
+  let product2 = getRandomNumber();
+  let product3 = getRandomNumber();
 
-  // how could we prevent Product1 being the same number a Product2?
-  while (Product1 === Product2) {
-    Product2 = getRandomNumber();
+
+  // how could we prevent product1 being the same number a product2?
+  while (product1 === product2 || product1 === product3 || product2 === product3) {
+    product1 = getRandomNumber();
+    product2 = getRandomNumber();
+    product3 = getRandomNumber();
   }
 
   // now we have two random numbers lets set the attributes of our images in the document.
-  image1.src = allProducts[Product1].src;
-  image2.src = allProducts[Product2].src;
-  image1.alt = allProducts[Product1].name;
-  image2.alt = allProducts[Product2].name;
-  allProducts[Product1].views++;
-  allProducts[Product2].views++;
+  image1.src = allProducts[product1].src;
+  image2.src = allProducts[product2].src;
+  image3.src = allProducts[product3].src;
+  image1.alt = allProducts[product1].name;
+  image2.alt = allProducts[product2].name;
+  image3.alt = allProducts[product3].name;
+  allProducts[product1].views++;
+  allProducts[product2].views++;
+  allProducts[product3].views++;
 }
 
 function handleProductClick(event) {
@@ -91,3 +98,46 @@ renderProducts();
 
 productContainer.addEventListener("click", handleProductClick);
 
+function renderChart() {
+  const productNames = [];
+  const productViews = [];
+  const productClicks = [];
+
+  for (let i = 0; i < allProducts.length; i++) {
+    productNames.push(allProducts[i].name);
+    productViews.push(allProducts[i].views);
+    productClicks.push(allProducts[i].clicks);
+  }
+
+  // console.log(productNames);
+  // console.log(productViews);
+  // console.log(productClicks);
+
+  const data = {
+    labels: productNames,
+    datasets: [
+      {
+        label: "clicks",
+        data: productClicks,
+        backgroundColor: ["#42032C"],
+        borderColor: ["#D36B00"],
+        borderWidth: 1,
+      },
+      {
+        label: "views",
+        data: productViews,
+        backgroundColor: ["#D36B00"],
+        borderColor: ["#42032C"],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const config = {
+    type: "bar",
+    data: data,
+  };
+
+  const productChart = document.getElementById("chart");
+  const myChart = new Chart(productChart, config);
+}
