@@ -54,8 +54,8 @@
   }
   
   section img {
-    width: 460px;
-    max-height: 26rem;
+    width: 330px;
+    max-height: 30rem;
     /* 
     aide accessibility by preventing layout shift by 
     adding a transparent border when a border is added 
@@ -65,7 +65,7 @@
   }
   
   section img:hover {
-    border: 5px solid rosybrown;
+    border: 5px solid white;
     cursor: pointer;
   }
   
